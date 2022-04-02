@@ -1,11 +1,10 @@
 @RestResource(urlMapping='/LeadRest/*')
 global class LeadRestApi {	
     @HttpPost
-    global static Lead getLeadByIdOrEmail(/*String body*/){  // 1)if method accepts body
+    global static Lead getLeadByIdOrEmail(){
         
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
-        //req.requestBody.set(body);                         // 2) apply accepted body
 
         Lead returnLead;
         
