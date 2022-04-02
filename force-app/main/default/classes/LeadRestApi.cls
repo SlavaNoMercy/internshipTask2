@@ -69,6 +69,8 @@ global class LeadRestApi {
                                WhoID = targetLead.Id, 
                                OwnerId = targetLead.OwnerId);
         //insert newTask;  it works! but commented for test
+        System.debug(newTask);
+        res.statusCode = 200;
         return newTask;
     }
 }
