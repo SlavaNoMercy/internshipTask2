@@ -68,7 +68,7 @@ global class LeadRestApi {
                                Status = 'Not Started',
                                WhoID = targetLead.Id, 
                                OwnerId = targetLead.OwnerId);
-        //insert newTask;  it works! but commented for test
+        insert newTask;
         System.debug(newTask);
         res.statusCode = 200;
         return newTask;
