@@ -2,12 +2,12 @@
 global class LeadRestApi {	
     @HttpPost
     global static Lead getLeadByIdOrEmail(){
-        
+    
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
 
         Lead returnLead;
-        
+        try{
         String findLead = req.requestBody.tostring();
         
         Map<String, Object> parMap = (Map<String, Object>) JSON.deserializeUntyped(findLead);
@@ -32,7 +32,13 @@ global class LeadRestApi {
         
         System.debug(returnLead);
         res.statusCode = 200;
-        return returnLead;    
+        return returnLead;
+    }catch(NullPointerException e){
+        e.getStackTraceString();
+        System.debug('Null pointer exception!!!');
+        return null;
+    }
+        
     }
     @HttpPut
     global static Task createTaskForLead(){
@@ -42,6 +48,7 @@ global class LeadRestApi {
 
         Lead targetLead;
         
+        try {
         String findLead = req.requestBody.tostring();
         
         Map<String, Object> parMap = (Map<String, Object>) JSON.deserializeUntyped(findLead);
@@ -72,5 +79,10 @@ global class LeadRestApi {
         System.debug(newTask);
         res.statusCode = 200;
         return newTask;
+    }catch(NullPointerException e){
+        e.getStackTraceString();
+        System.debug('Null pointer exception!!!');
+        return null;
+    }
     }
 }
