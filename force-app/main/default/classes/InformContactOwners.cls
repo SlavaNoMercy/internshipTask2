@@ -2,6 +2,7 @@ global class InformContactOwners implements Database.Batchable<sObject>, Schedul
 
     List<String> owners = new List<String>();
     Map<Contact,String> ownersAndContacts = new Map<Contact,String>();
+    static final String cronStr = '0 0 12 * * ?';
 
     global database.querylocator start(Database.BatchableContext BC)
     {
@@ -12,7 +13,7 @@ global class InformContactOwners implements Database.Batchable<sObject>, Schedul
     }
     global void execute(SchedulableContext ctx) {
         InformContactOwners informContactOwners = new InformContactOwners();
-        String cronStr = '0 0 12 * * ?';
+        //String cronStr = '0 0 12 * * ?';
         String jobID = System.schedule('Send Notifications', cronStr, informContactOwners); 
  	}
  
